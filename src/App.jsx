@@ -33,7 +33,7 @@ function StepIndicator({ stepId, currentStep }) {
   )
 }
 
-function Sidebar({ currentStep }) {
+function Sidebar({ currentStep, onGoToStep }) {
   return (
     <aside style={styles.sidebar}>
       <p style={styles.sidebarTitle}>Account Setup</p>
@@ -41,10 +41,19 @@ function Sidebar({ currentStep }) {
         <div style={styles.stepLine} />
         {STEPS.map((step) => {
           const isActive = step.id === currentStep
+          const isVisited = step.id <= currentStep
           return (
-            <div key={step.id} style={styles.step}>
+            <div
+              key={step.id}
+              onClick={() => onGoToStep(step.id)}
+              style={{ ...styles.step, cursor: 'pointer' }}
+            >
               <StepIndicator stepId={step.id} currentStep={currentStep} />
-              <span style={{ ...styles.stepLabel, ...(isActive ? styles.stepLabelActive : {}) }}>
+              <span style={{
+                ...styles.stepLabel,
+                ...(isVisited ? styles.stepLabelActive : {}),
+                fontWeight: isActive ? 600 : 500,
+              }}>
                 {step.label}
               </span>
             </div>
@@ -81,7 +90,7 @@ export default function App() {
       `}</style>
 
       <div style={styles.page}>
-        <Sidebar currentStep={currentStep} />
+        <Sidebar currentStep={currentStep} onGoToStep={goToStep} />
         <main style={styles.main}>
           {StepComponent && (
             <StepComponent

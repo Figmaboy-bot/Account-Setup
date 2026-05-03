@@ -65,8 +65,13 @@ function PlanCard({ plan, selected, onSelect }) {
         cursor: 'pointer',
       }}
     >
-      {/* Header row */}
-      <div style={{ ...styles.cardHeader, borderBottom: selected ? '1px solid rgba(0,0,0,0.1)' : 'none', paddingBottom: selected ? 20 : 0 }}>
+      <div style={{
+        ...styles.cardHeader,
+        borderBottom: '1px solid rgba(0,0,0,0.1)',
+        borderBottomColor: selected ? 'rgba(0,0,0,0.1)' : 'transparent',
+        paddingBottom: selected ? 20 : 0,
+        transition: 'padding-bottom 0.35s ease, border-color 0.35s ease',
+      }}>
         <div style={styles.planInfo}>
           <p style={styles.planName}>{plan.name}</p>
           <p style={styles.planDesc}>{plan.description}</p>
@@ -77,8 +82,12 @@ function PlanCard({ plan, selected, onSelect }) {
         </div>
       </div>
 
-      {/* Features — only shown when selected */}
-      {selected && (
+      <div style={{
+        overflow: 'hidden',
+        maxHeight: selected ? 300 : 0,
+        opacity: selected ? 1 : 0,
+        transition: 'max-height 0.35s ease, opacity 0.25s ease',
+      }}>
         <div style={styles.features}>
           {plan.features.map((f) => (
             <div key={f} style={styles.featureRow}>
@@ -87,7 +96,7 @@ function PlanCard({ plan, selected, onSelect }) {
             </div>
           ))}
         </div>
-      )}
+      </div>
     </div>
   )
 }
@@ -168,7 +177,6 @@ const styles = {
     padding: 20,
     display: 'flex',
     flexDirection: 'column',
-    gap: 20,
     transition: 'border-color 0.15s ease',
   },
   cardHeader: {
@@ -219,6 +227,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: 12,
+    paddingTop: 20,
   },
   featureRow: {
     display: 'flex',

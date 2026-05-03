@@ -11,35 +11,44 @@ const PATHS = [
 
 export default function Spinner() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      style={{ flexShrink: 0 }}
-    >
-      <g clipPath="url(#clip0_137_276)">
-        {PATHS.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            stroke="black"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{
-              animation: 'spinner-fade 1s linear infinite',
-              animationDelay: `${-(i / PATHS.length)}s`,
-            }}
-          />
-        ))}
-      </g>
-      <defs>
-        <clipPath id="clip0_137_276">
-          <rect width="32" height="32" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
+    <>
+      <style>{`
+        @keyframes spinner-fade {
+          0%   { opacity: 1; }
+          100% { opacity: 0.15; }
+        }
+      `}</style>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        style={{ flexShrink: 0, overflow: 'visible' }}
+      >
+        <circle cx="16" cy="16" r="19" fill="#f6f6f6" />
+        <g clipPath="url(#clip0_137_276)">
+          {PATHS.map((d, i) => (
+            <path
+              key={i}
+              d={d}
+              stroke="black"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                animation: 'spinner-fade 1.8s linear infinite',
+                animationDelay: `${-(i / PATHS.length) * 1.8}s`,
+              }}
+            />
+          ))}
+        </g>
+        <defs>
+          <clipPath id="clip0_137_276">
+            <rect width="32" height="32" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </>
   )
 }

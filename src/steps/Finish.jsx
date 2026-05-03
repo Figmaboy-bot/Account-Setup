@@ -1,5 +1,5 @@
 import ArrowIcon from '../icons/ArrowIcon'
-import BackArrow from '../icons/BackArrow'
+import EditIcon from '../icons/EditIcon'
 import LinearIcon from '../icons/tools/LinearIcon'
 import HubSpotIcon from '../icons/tools/HubSpotIcon'
 import MailchimpIcon from '../icons/tools/MailchimpIcon'
@@ -41,8 +41,14 @@ function Row({ label, children }) {
   )
 }
 
+const PLAN_LABELS = {
+  free:       'Free — $0.00 / mo',
+  pro:        'Pro — $29.00 / mo',
+  enterprise: 'Enterprise — $99.00 / mo',
+}
+
 export default function Finish({ formData, onGoToStep }) {
-  const { personal, socials, tools } = formData
+  const { personal, socials, tools, plan } = formData
 
   const connectedTools = Object.entries(tools)
     .filter(([, v]) => v)
@@ -78,6 +84,10 @@ export default function Finish({ formData, onGoToStep }) {
           </div>
         </Row>
 
+        <Row label="Plan :">
+          <p style={styles.value}>{PLAN_LABELS[plan] || '—'}</p>
+        </Row>
+
         <Row label="Linked socials :">
           <div style={styles.badges}>
             {linkedSocials.length > 0
@@ -97,7 +107,7 @@ export default function Finish({ formData, onGoToStep }) {
           onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.1)')}
           onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.06)')}
         >
-          <BackArrow />
+          <EditIcon />
           Edit
         </button>
 
