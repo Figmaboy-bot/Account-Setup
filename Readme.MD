@@ -22,13 +22,6 @@ Built as part of my playground — a collection of UI experiments where I transl
 - Smooth transitions between setup steps
 - Designing onboarding flows that feel fast, not tedious
 
-## Run Locally
-
-```bash
-npm install
-npm run dev
-```
-
 ---
 
 Made by [Ola](https://sulaimonodeniran.com) — Design Engineer
