@@ -60,8 +60,8 @@ export default function LinkSocials({ onNext, onBack, formData, onUpdate }) {
             type="button"
             onClick={onBack}
             style={styles.btnBack}
-            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.1)')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.06)')}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.1)'; e.currentTarget.style.gap = '14px' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; e.currentTarget.style.gap = '8px' }}
           >
             <BackArrow />
             Back
@@ -70,8 +70,8 @@ export default function LinkSocials({ onNext, onBack, formData, onUpdate }) {
           <button
             type="submit"
             style={styles.btnNext}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#1a1a1a')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#000')}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.gap = '14px' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#000'; e.currentTarget.style.gap = '8px' }}
           >
             Next Step
             <ArrowIcon />
@@ -166,7 +166,7 @@ const styles = {
     fontWeight: 500,
     lineHeight: '20px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
+    transition: 'background 0.15s ease, gap 0.15s ease',
   },
   btnNext: {
     display: 'inline-flex',
@@ -182,6 +182,6 @@ const styles = {
     fontWeight: 500,
     lineHeight: '20px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
+    transition: 'background 0.15s ease, gap 0.15s ease',
   },
 }

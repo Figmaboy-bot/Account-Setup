@@ -43,8 +43,8 @@ export default function PersonalInfo({ onNext, formData, onUpdate }) {
         <button
           type="submit"
           style={styles.btnNext}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#1a1a1a')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#000')}
+          onMouseEnter={(e) => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.gap = '14px' }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = '#000'; e.currentTarget.style.gap = '8px' }}
         >
           Next Step
           <ArrowIcon />
@@ -91,7 +91,7 @@ const styles = {
     fontWeight: 500,
     lineHeight: '20px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
+    transition: 'background 0.15s ease, gap 0.15s ease',
     alignSelf: 'flex-start',
   },
 }

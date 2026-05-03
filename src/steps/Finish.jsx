@@ -104,8 +104,8 @@ export default function Finish({ formData, onGoToStep }) {
           type="button"
           onClick={() => onGoToStep(1)}
           style={styles.btnEdit}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.1)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,0,0,0.06)')}
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.1)'; e.currentTarget.style.gap = '14px' }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.06)'; e.currentTarget.style.gap = '8px' }}
         >
           <EditIcon />
           Edit
@@ -114,8 +114,8 @@ export default function Finish({ formData, onGoToStep }) {
         <button
           type="button"
           style={styles.btnDashboard}
-          onMouseEnter={(e) => (e.currentTarget.style.background = '#1a1a1a')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = '#000')}
+          onMouseEnter={(e) => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.gap = '14px' }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = '#000'; e.currentTarget.style.gap = '8px' }}
           onClick={() => alert('Welcome to your dashboard!')}
         >
           Go to Dashboard
@@ -222,7 +222,7 @@ const styles = {
     fontWeight: 500,
     lineHeight: '20px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
+    transition: 'background 0.15s ease, gap 0.15s ease',
   },
   btnDashboard: {
     display: 'inline-flex',
@@ -238,6 +238,6 @@ const styles = {
     fontWeight: 500,
     lineHeight: '20px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
+    transition: 'background 0.15s ease, gap 0.15s ease',
   },
 }

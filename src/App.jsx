@@ -34,11 +34,19 @@ function StepIndicator({ stepId, currentStep }) {
 }
 
 function Sidebar({ currentStep, onGoToStep }) {
+  const progress = (currentStep - 1) / (STEPS.length - 1)
   return (
     <aside style={styles.sidebar}>
       <p style={styles.sidebarTitle}>Account Setup</p>
       <div style={styles.steps}>
         <div style={styles.stepLine} />
+        <div style={{
+          ...styles.stepLine,
+          background: '#000',
+          bottom: 'auto',
+          height: `calc(${progress} * (100% - 60px))`,
+          transition: 'height 0.3s ease',
+        }} />
         {STEPS.map((step) => {
           const isActive = step.id === currentStep
           const isVisited = step.id <= currentStep
@@ -65,7 +73,7 @@ function Sidebar({ currentStep, onGoToStep }) {
 }
 
 export default function App() {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useState(4)
   const [formData, setFormData] = useState({
     personal: { fullName: '', username: '', email: '' },
     socials: { twitter: '', instagram: '', linkedin: '', github: '' },
@@ -140,7 +148,7 @@ const styles = {
     position: 'absolute',
     left: 15,
     top: 30,
-    width: 1,
+    width: 2,
     bottom: 30,
     background: '#ddd',
     pointerEvents: 'none',
